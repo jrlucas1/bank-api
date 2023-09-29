@@ -14,23 +14,23 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 
-@Table(name = "users")
+@Table
 @Entity(name = "users")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class User implements UserDetails {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Long id;
 
     @NotBlank(message = "login is mandatory")
     @Size(min = 3, max = 50, message = "login must be between 3 and 50 characters")
     private String login;
 
     @NotBlank(message = "password is mandatory")
-    @Size(min = 3, max = 50, message = "password must be between 3 and 50 characters")
     private String password;
     private UserRole role;
 

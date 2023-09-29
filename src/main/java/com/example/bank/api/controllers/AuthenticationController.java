@@ -43,6 +43,7 @@ public class AuthenticationController {
 
     @PostMapping("/register")
     public ResponseEntity register (@RequestBody @Valid RegisterDTO login){
+        System.out.println(login);
         if(this.rep.findByLogin(login.login()) != null) return ResponseEntity.badRequest().build();
 
         String encryptedPassword = new BCryptPasswordEncoder().encode(login.password());
